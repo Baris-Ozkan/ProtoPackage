@@ -3,5 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "les-proto-package": {
+      "projectType": "library",
+      "root": "projects/les-proto-package",
+      "sourceRoot": "projects/les-proto-package/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/les-proto-package/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/les-proto-package/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/les-proto-package/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/les-proto-package/src/test.ts",
+            "tsConfig": "projects/les-proto-package/tsconfig.spec.json",
+            "karmaConfig": "projects/les-proto-package/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
