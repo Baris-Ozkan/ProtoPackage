@@ -7,3 +7,4 @@ export * from './lib/les-proto-package.component';
 export * from './lib/les-proto-package.module';
 export * from './lib/no-sall-u.pipe';
 export * from './lib/italic-highlight.directive';
+export * from './lib/dummy-api.service';
