@@ -1,24 +1,18 @@
 # LesProtoPackage
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+This is a prototype package to test how to form libraries in Angular. The package includes an Angular component, service, pipe, and a directive to test functionality.
 
-## Code scaffolding
+## How to make a library and turn it into npm package using Angular
 
-Run `ng generate component component-name --project les-proto-package` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project les-proto-package`.
-> Note: Don't forget to add `--project les-proto-package` or else it will be added to the default project in your `angular.json` file. 
+1. Make sure that you have an npm account to sign-in and publish your library as well as nodejs and npm installed in your environment.
+2. Create a workspace with the command `ng new <work-spae> --create-application=false`. The flag prevents Angular from building the default application so that we can work on a clean empty workspace.
+3. Create a library with the command `ng generate library <library-name>`
+4. Put any component, service, pipe, directive, etc. in the generated library directory most likely under `projects/<library-name>/src/lib/`. You can generate any new Angular class by using the `generate` command. Ex: `ng generate pipe <pipe-name>`
+5. Make sure that any Angular class you want to use is exported through `public-api.ts` and the `.module.ts` files. Ex: in `public-api.ts` `export * from './lib/italic-highlight.directive';`. In `.module.ts`, `exports: [LesProtoPackageComponent, ItalicHighlightDirective, NoSAllUPipe]`
+5. Build the library with the command `ng build`
+6. Login to the npm registry with `npm login` and navigate to the dist directory generated after building the library `cd dist/<library-name>`.
+7. Publish the library with `npm publish`.
 
-## Build
+## How to update your library
 
-Run `ng build les-proto-package` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build les-proto-package`, go to the dist folder `cd dist/les-proto-package` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test les-proto-package` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you want to update your library package, just repeat the steps from 6 to 8 but increment the version in `package.json` under `dist/library` after building and then publish again.
