@@ -19,9 +19,8 @@ export class HttpDataService {
     return this.http
       .get('https://jsonplaceholder.typicode.com/' + request)
       .pipe(
-        // filter((obj:any) => obj.id <= upToThisN),
-        map((response) => {return response;})
-
+        map((response:any) => {
+          return response.filter((obj:any) => obj.id <= upToThisN)})
       )
   }
 }
